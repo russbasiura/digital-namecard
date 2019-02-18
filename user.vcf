@@ -1,14 +1,14 @@
 BEGIN:VCARD
 VERSION:3.0
 PRODID:-//Apple Inc.//iPhone OS 11.2.2//EN
-N:Lim;Preston;;;
-FN: Preston  Lim 
-ORG:GovTech;
-TITLE:Associate Software Engineer\nProducts Team, Data Science Division
-EMAIL;type=INTERNET;type=WORK;type=pref:preston@data.gov.sg
-TEL;type=WORK;type=VOICE:+65 9123 4567
-item1.ADR;type=WORK;type=pref:;;1 Fusionopolis View\nSandcrawler\, 09-01;;;138577;Singapore
-item1.X-ABADR:sg
-item2.URL;type=pref:tech.gov.sg
+N:Basiura;Russ;;;
+FN: Russ Basiura 
+ORG:Accel365;
+TITLE:Managing Partner\nMicrosoft Practice
+EMAIL;type=INTERNET;type=WORK;type=pref:russ@accel365.com
+TEL;type=WORK;type=VOICE:+1 267 218 4249
+item1.ADR;type=WORK;type=pref:;;Market Street\nPhiladelphia\,PA\n;;;;United States
+item1.X-ABADR:com
+item2.URL;type=pref:accel365.com
 item2.X-ABLabel:_$!<HomePage>!$_
 END:VCARD
