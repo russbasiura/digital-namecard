@@ -1,0 +1,29 @@
+# SPFx
+node_modules/
+spfx/lib/
+spfx/lib-commonjs/
+spfx/dist/
+spfx/temp/
+spfx/release/
+spfx/jest-output/
+spfx/sharepoint/solution/
+*.sppkg
+.heft/
+
+# E2E
+tests/e2e/.auth/
+tests/e2e/artifacts/
+tests/e2e/test-results/
+tests/e2e/playwright-report/
+
+# Secrets — never commit
+.env
+.env.*
+*.pfx
+*.pem
+*.key
+*.cer
+
+# OS / editor
+.DS_Store
+~$*.xlsx

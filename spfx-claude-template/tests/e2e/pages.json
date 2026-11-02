@@ -1,0 +1,18 @@
+{
+  "$comment": "One entry per screen to verify. url is relative to SPO_TARGET_SITE_URL. design = file in requirements/design used for the fidelity review. root = CSS selector of the app's root element (scopes screenshots + axe). Claude maintains this file.",
+  "viewports": {
+    "desktop": { "width": 1366, "height": 768 },
+    "tablet": { "width": 768, "height": 1024 },
+    "mobile": { "width": 375, "height": 812 }
+  },
+  "pages": [
+    {
+      "name": "home",
+      "url": "/SitePages/Home.aspx",
+      "root": "[data-app-root='my-webpart']",
+      "design": { "desktop": "requirements/design/01-home-desktop.png", "mobile": "requirements/design/01-home-mobile.png" },
+      "requirements": ["REQ-001"],
+      "smoke": true
+    }
+  ]
+}

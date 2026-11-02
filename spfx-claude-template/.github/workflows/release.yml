@@ -1,0 +1,35 @@
+# Manual fallback: (re)deploy any tag from GitHub Actions — e.g. rollback when no Claude session is available.
+# Requires repo secrets with the same names as the Claude Code environment variables (see README).
+name: Release (manual)
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: Tag or branch to deploy (e.g. v1.4.0)
+        required: true
+permissions:
+  contents: read
+concurrency: tenant-deploy
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      M365_TENANT_ID: ${{ secrets.M365_TENANT_ID }}
+      M365_APP_ID: ${{ secrets.M365_APP_ID }}
+      M365_CERT_BASE64: ${{ secrets.M365_CERT_BASE64 }}
+      M365_CERT_PASSWORD: ${{ secrets.M365_CERT_PASSWORD }}
+      SPO_TENANT_URL: ${{ secrets.SPO_TENANT_URL }}
+      SPO_APP_CATALOG_URL: ${{ secrets.SPO_APP_CATALOG_URL }}
+      SPO_TARGET_SITE_URL: ${{ secrets.SPO_TARGET_SITE_URL }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: spfx/.nvmrc
+      - run: npm install -g @pnp/cli-microsoft365
+      - run: bash scripts/build.sh
+      - run: node scripts/provision.mjs
+      - run: bash scripts/deploy.sh

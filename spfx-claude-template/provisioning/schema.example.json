@@ -1,0 +1,29 @@
+{
+  "$comment": "Copy to e.g. provisioning/01-lists.json. Files are applied in name order. Additive only.",
+  "lists": [
+    {
+      "title": "Departments",
+      "template": "GenericList",
+      "description": "Department lookup",
+      "fields": [
+        { "internalName": "DeptCode", "displayName": "Department Code", "type": "Text", "required": true, "indexed": true }
+      ]
+    },
+    {
+      "title": "Employee Cards",
+      "template": "GenericList",
+      "fields": [
+        { "internalName": "JobTitle0", "displayName": "Job Title", "type": "Text" },
+        { "internalName": "Bio", "displayName": "Bio", "type": "Note", "numLines": 6, "richText": false },
+        { "internalName": "Status", "displayName": "Status", "type": "Choice", "choices": ["Draft", "Published"], "default": "Draft" },
+        { "internalName": "StartDate", "displayName": "Start Date", "type": "DateTime", "format": "DateOnly" },
+        { "internalName": "Employee", "displayName": "Employee", "type": "User", "required": true },
+        { "internalName": "Department", "displayName": "Department", "type": "Lookup", "lookupList": "Departments", "showField": "Title" },
+        { "internalName": "Photo", "displayName": "Photo", "type": "Thumbnail" }
+      ],
+      "views": [
+        { "title": "Published", "fields": ["LinkTitle", "Employee", "Department", "Status"], "query": "<Where><Eq><FieldRef Name='Status'/><Value Type='Choice'>Published</Value></Eq></Where>", "rowLimit": 100 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+{
+  "$comment": "Requirement overrides. Example: \"REQ-021\": {\"status\": \"deferred\", \"reason\": \"Needs Graph Mail.Send approval\"}. Status: in-scope | deferred | out-of-scope"
+}
