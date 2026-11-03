@@ -31,7 +31,12 @@ You do the one-time setup (sections 1–3) once per tenant. Section 4 is repeate
    ```bash
    base64 -w0 spfx-deploy.pfx > spfx-deploy.pfx.b64
    ```
-   (On macOS: `base64 -i spfx-deploy.pfx -o spfx-deploy.pfx.b64`.) Store the `.pfx` and its password in your vault.
+   On Windows PowerShell (no `base64` command), run this instead:
+   ```powershell
+   [Convert]::ToBase64String([IO.File]::ReadAllBytes("$PWD\spfx-deploy.pfx")) | Set-Content -NoNewline spfx-deploy.pfx.b64
+   ```
+   (On macOS: `base64 -i spfx-deploy.pfx -o spfx-deploy.pfx.b64`.) **Create these files outside any git repo**,
+   e.g. in `C:\certs\spfx-deploy\`. Store the `.pfx` and its password in your vault.
 2. **Register the app** in Entra admin center → *App registrations → New registration*. Name it `SPFx Claude Deploy`,
    single tenant, no redirect URI.
 3. *Certificates & secrets → Certificates → Upload* `spfx-deploy.cer`.
