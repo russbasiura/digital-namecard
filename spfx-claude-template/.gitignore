@@ -23,6 +23,10 @@ tests/e2e/playwright-report/
 *.pem
 *.key
 *.cer
+*.b64
+*.crt
+*.p12
+spfx-deploy.*
 
 # OS / editor
 .DS_Store
